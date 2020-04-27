@@ -126,8 +126,8 @@ dqs_drld_TRM_ref = BB.*dTs_drld_TRM_ref;
 dqs_dTa_TRM_ref  = BB.*dTs_dTa_TRM_ref;
 dqs_dqa_TRM_ref  = BB.*dTs_dqa_TRM_ref - ra_ref./(ra_ref+rs_ref) + 1;
 
-% sensitivity of surface specific humidity to emissivity
-dqs_demis_TRM_ref = BB.*dTs_demis_TRM_ref;
+% sensitivity of surface specific humidity to 
+dqs_demis_TRM_ref = ;
 %% calculate based on perturbation state
 
 % calculate apparent radiation and ground heat flux (which is the residual of surface energy balance equation)
@@ -225,12 +225,8 @@ dqs_dGrnd_TRM_sel = BB.*dTs_dGrnd_TRM_sel;
 
 % (4/26/20)
 % sensitivity of surface specific humidity to incoming shortwave radiation and longwave radiation
-dqs_dswd_TRM_sel = BB.*dTs_dswd_TRM_sel;
-dqs_drld_TRM_sel = BB.*dTs_drld_TRM_sel;
-
-% sensitivity of surface specific humidity to air temperature and specific humidity
-dqs_dTa_TRM_sel  = BB.*dTs_dTa_TRM_sel;
-dqs_dqa_TRM_sel  = BB.*dTs_dqa_TRM_sel - ra_sel./(ra_sel+rs_sel) + 1;
-
-% sensitivity of surface specific humidity to emissivity
-dqs_demis_TRM_sel = BB.*dTs_demis_TRM_sel;
+dqs_dswd_TRM_sel = ;
+dqs_drld_TRM_sel = ;
+dqs_dTa_TRM_sel  = zeros(size(dqs_dGrnd_TRM_sel));
+dqs_dqa_TRM_sel  = zeros(size(dqs_dGrnd_TRM_sel));
+dqs_demis_TRM_sel = zeros(size(dqs_dGrnd_TRM_sel));
