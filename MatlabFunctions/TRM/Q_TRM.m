@@ -216,7 +216,7 @@ dqs_drs_TRM_sel = -ra_sel./(ra_sel+rs_sel).^2.*(qs_sat_modeled_sel-qa_sel)+BB.*d
 % sensitivity of surface specific humidity to ground heat flux
 dqs_dGrnd_TRM_sel = BB.*dTs_dGrnd_TRM_sel;
 
-% to add (4/26/20)
+% to add 
 % dqs_dswd_TRM_sel = zeros(size(dqs_dGrnd_TRM_sel));
 % dqs_drld_TRM_sel = zeros(size(dqs_dGrnd_TRM_sel));
 % dqs_dTa_TRM_sel  = zeros(size(dqs_dGrnd_TRM_sel));

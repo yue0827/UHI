@@ -73,11 +73,23 @@ dq2_dGrnd_TRM_ref = BB.*dTs_dGrnd_TRM_ref;
 dq2_dra_prime_TRM_ref = (1./(ra_ref+rs_ref)).*(qs_sat_modeled_ref-qa_ref);
 
 % to add
-dq2_dswd_TRM_ref = zeros(size(dq2_dGrnd_TRM_ref));
-dq2_drld_TRM_ref = zeros(size(dq2_dGrnd_TRM_ref));
-dq2_dTa_TRM_ref  = zeros(size(dq2_dGrnd_TRM_ref));
-dq2_dqa_TRM_ref  = zeros(size(dq2_dGrnd_TRM_ref));
-dq2_demis_TRM_ref = zeros(size(dq2_dGrnd_TRM_ref));
+% dq2_dswd_TRM_ref = zeros(size(dq2_dGrnd_TRM_ref));
+% dq2_drld_TRM_ref = zeros(size(dq2_dGrnd_TRM_ref));
+% dq2_dTa_TRM_ref  = zeros(size(dq2_dGrnd_TRM_ref));
+% dq2_dqa_TRM_ref  = zeros(size(dq2_dGrnd_TRM_ref));
+% dq2_demis_TRM_ref = zeros(size(dq2_dGrnd_TRM_ref));
+
+% (4/28/20)
+% sensitivity of surface specific humidity to incoming shortwave radiation and longwave radiation
+dq2_dswd_TRM_ref = BB.*dTs_dswd_TRM_ref;
+dq2_drld_TRM_ref = BB.*dTs_drld_TRM_ref;
+
+% sensitivity of surface specific humidity to air temperature and specific humidity
+dq2_dTa_TRM_ref  = BB.*dTs_dTa_TRM_ref;
+dq2_dqa_TRM_ref  = BB.*dTs_dqa_TRM_ref - ra_prime_ref./(ra_ref+rs_ref) + 1;
+
+% sensitivity of surface specific humidity to emissivity
+dq2_demis_TRM_ref = BB.*dTs_demis_TRM_ref;
 
 %% calculate based on perturbation state
 Ta_c_sel  = Ta_sel-273.15;
@@ -113,9 +125,21 @@ dq2_dGrnd_TRM_sel = BB.*dTs_dGrnd_TRM_sel;
 dq2_dra_prime_TRM_sel = (1./(ra_sel+rs_sel)).*(qs_sat_modeled_sel-qa_sel);
 
 % to add
-dq2_dswd_TRM_sel = zeros(size(dq2_dGrnd_TRM_sel));
-dq2_drld_TRM_sel = zeros(size(dq2_dGrnd_TRM_sel));
-dq2_dTa_TRM_sel  = zeros(size(dq2_dGrnd_TRM_sel));
-dq2_dqa_TRM_sel  = zeros(size(dq2_dGrnd_TRM_sel));
-dq2_demis_TRM_sel = zeros(size(dq2_dGrnd_TRM_sel));
+% dq2_dswd_TRM_sel = zeros(size(dq2_dGrnd_TRM_sel));
+% dq2_drld_TRM_sel = zeros(size(dq2_dGrnd_TRM_sel));
+% dq2_dTa_TRM_sel  = zeros(size(dq2_dGrnd_TRM_sel));
+% dq2_dqa_TRM_sel  = zeros(size(dq2_dGrnd_TRM_sel));
+% dq2_demis_TRM_sel = zeros(size(dq2_dGrnd_TRM_sel));
+
+% (4/28/20)
+% sensitivity of surface specific humidity to incoming shortwave radiation and longwave radiation
+dq2_dswd_TRM_sel = BB.*dTs_dswd_TRM_sel;
+dq2_drld_TRM_sel = BB.*dTs_drld_TRM_sel;
+
+% sensitivity of surface specific humidity to air temperature and specific humidity
+dq2_dTa_TRM_sel  = BB.*dTs_dTa_TRM_sel;
+dq2_dqa_TRM_sel  = BB.*dTs_dqa_TRM_sel - ra_prime_sel./(ra_sel+rs_sel) + 1;
+
+% sensitivity of surface specific humidity to emissivity
+dq2_demis_TRM_sel = BB.*dTs_demis_TRM_sel;
 
