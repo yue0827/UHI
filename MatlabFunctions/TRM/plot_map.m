@@ -24,7 +24,7 @@ elseif average_period_value == 2
     Values_input_average_north = annual_average(Values_input.*mask, average_period_north, yr_Num);
     Values_input_annual_north = nanmean(Values_input_average_north,3);
     Values_input_average_south = annual_average(Values_input.*mask, average_period_south, yr_Num);
-    Values_input_annual_south = nanmean(Values_input_average_south,3);
+    Values_input_annual_south = nanmean(Values_input_average_south,3); %% 2*2matrix
     
     display_map_season(Values_input_annual_north, Values_input_annual_south, average_period_value, value_limit)
 

@@ -1,4 +1,4 @@
-%% this code can be used for both T2 and T2. Just replace T2 with T2 throughout the script
+%% this code can be used for both Ts and T2. Just replace Ts with T2 throughout the script
 
 close all
 clear all
@@ -57,8 +57,11 @@ mask_2 = nan(size(mask));
             
             for i =1: yr_Num
                 
-                mask_2(:,:,(i-1)*12+1:(i-1)*12+1) = mask (:,:,(i-1)*12+1:(i-1)*12+1);                
-                mask_2(:,:,(i-1)*12+11:(i-1)*12+12) = mask (:,:,(i-1)*12+11:(i-1)*12+12);
+%                 mask_2(:,:,(i-1)*12+1:(i-1)*12+1) = mask (:,:,(i-1)*12+1:(i-1)*12+1);                
+%                 mask_2(:,:,(i-1)*12+11:(i-1)*12+12) = mask (:,:,(i-1)*12+11:(i-1)*12+12);
+                  %%% Editted on 6/3/20
+                  mask_2(:,:,(i-1)*12+1:(i-1)*12+2) = mask (:,:,(i-1)*12+1:(i-1)*12+2);                
+                  mask_2(:,:,(i-1)*12+12:(i-1)*12+12) = mask (:,:,(i-1)*12+12:(i-1)*12+12);
     
             end            
 
@@ -158,7 +161,7 @@ for i = 1:6
     elseif i == 3
         Values_input = T2_term_alpha_TRM;
     elseif i == 4
-        Values_input = T2_term_ra_TRM + T2_term_ra_prime_TRM;
+        Values_input = T2_term_ra_TRM + T2_term_ra_prime_TRM; %% combine two resistance
     elseif i == 5
         Values_input = T2_term_rs_TRM;
     elseif i == 6

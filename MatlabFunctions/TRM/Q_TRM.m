@@ -117,7 +117,7 @@ dqs_dGrnd_TRM_ref = BB.*dTs_dGrnd_TRM_ref;
 % dqs_dqa_TRM_ref  = zeros(size(dqs_dGrnd_TRM_ref));
 % dqs_demis_TRM_ref = zeros(size(dqs_dGrnd_TRM_ref));
 
-% (4/26/20)
+% editted(4/26/20)
 % sensitivity of surface specific humidity to incoming shortwave radiation and longwave radiation
 dqs_dswd_TRM_ref = BB.*dTs_dswd_TRM_ref;
 dqs_drld_TRM_ref = BB.*dTs_drld_TRM_ref;
@@ -223,7 +223,7 @@ dqs_dGrnd_TRM_sel = BB.*dTs_dGrnd_TRM_sel;
 % dqs_dqa_TRM_sel  = zeros(size(dqs_dGrnd_TRM_sel));
 % dqs_demis_TRM_sel = zeros(size(dqs_dGrnd_TRM_sel));
 
-% (4/26/20)
+% editted(4/26/20)
 % sensitivity of surface specific humidity to incoming shortwave radiation and longwave radiation
 dqs_dswd_TRM_sel = BB.*dTs_dswd_TRM_sel;
 dqs_drld_TRM_sel = BB.*dTs_drld_TRM_sel;

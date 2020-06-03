@@ -5,7 +5,7 @@ values_get = Values_input_annual_north;
 values_get_size = size(values_get);
 values = zeros (size(values_get)) + NaN;
 
-values(1:values_get_size(1)/2,:) = values_get((values_get_size(1)/2+1):end,:); % flip left-right
+values(1:values_get_size(1)/2,:) = values_get((values_get_size(1)/2+1):end,:); % flip left-right (by longitude)
 values((values_get_size(1)/2+1):end,:) = values_get(1:values_get_size(1)/2,:);
 
 
@@ -20,7 +20,7 @@ hold on
 
 % axis equal
 lon1 = -180; lon2 = 180; lat1 = -90; lat2 = 90;
-set(gca,'XLim',[lon1 lon2],'YLim',[0 lat2]);
+set(gca,'XLim',[lon1 lon2],'YLim',[0 lat2]); %% Northern Hemisphere
 set(gca,'XTick',lon1:30:lon2);
 % set(gca,'XTickLabel',{'180^o','','120^oW','','60^oW','','0^o','','60^oE','','120^oE','','180^o'});
 set(gca,'XTickLabel',{''});
@@ -150,7 +150,7 @@ hold on
 
 % axis equal
 % lon1 = -180; lon2 = 180; lat1 = -90; lat2 = 90;
-set(gca,'XLim',[lon1 lon2],'YLim',[-60 0]);
+set(gca,'XLim',[lon1 lon2],'YLim',[-60 0]); %% Southern Hemisphere
 set(gca,'XTick',lon1:30:lon2);
 set(gca,'XTickLabel',{'180^o','','120^oW','','60^oW','','0^o','','60^oE','','120^oE','','180^o'});
 % set(gca,'XTickLabel',{''});

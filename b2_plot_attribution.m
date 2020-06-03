@@ -1,4 +1,4 @@
-%% this code can be used for both Ts and Ts. Just replace Ts with WGT throughout the script
+%% this code can be used for both Ts and WGT. Just replace Ts with WGT throughout the script
 
 close all
 clear all
@@ -53,8 +53,11 @@ mask_2 = nan(size(mask));
             
             for i =1: yr_Num
                 
-                mask_2(:,:,(i-1)*12+1:(i-1)*12+1) = mask (:,:,(i-1)*12+1:(i-1)*12+1);                
-                mask_2(:,:,(i-1)*12+11:(i-1)*12+12) = mask (:,:,(i-1)*12+11:(i-1)*12+12);
+%                 mask_2(:,:,(i-1)*12+1:(i-1)*12+1) = mask (:,:,(i-1)*12+1:(i-1)*12+1);                
+%                 mask_2(:,:,(i-1)*12+11:(i-1)*12+12) = mask (:,:,(i-1)*12+11:(i-1)*12+12);
+                %%% Editted on 6/2/20
+                  mask_2(:,:,(i-1)*12+1:(i-1)*12+2) = mask (:,:,(i-1)*12+1:(i-1)*12+2);                
+                  mask_2(:,:,(i-1)*12+12:(i-1)*12+12) = mask (:,:,(i-1)*12+12:(i-1)*12+12);
     
             end            
 
@@ -109,7 +112,7 @@ limit_up = 15;
 limit_down = -15;
 xx = [limit_down limit_up];
 yy = [limit_down limit_up];
-plot(xx,yy,'k--')
+plot(xx,yy,'K--')
 xlim([limit_down limit_up])
 ylim([limit_down limit_up])
 set(gca, 'XTick', limit_down:2:limit_up);
@@ -279,6 +282,7 @@ for ivar = 1:var_Num
     
     clear x_temp1 x_temp2 y_temp nan_value
  
+    % calculate varaible mean and std value
     eval(['[',variable,'_global{region_index},',variable,'_mean{region_index},',strtrim(variable),'_std{region_index}]=spatial_DL(',variable,'(lon_index{region_index},lat_index{region_index},:).*mask_to_use(lon_index{region_index},lat_index{region_index},:))']);
 
     % calculate covariances 
@@ -302,7 +306,7 @@ end
 
 end
 
-%% 
+%%  Ts attribution for one region
 Fontsize_value = 14;
 Fontname_value = 'Arial';
 n_row = 1;
@@ -364,7 +368,7 @@ set(gca, 'fontname',Fontname_value,'Fontsize',Fontsize_value)
 print('-djpeg', '-r600', [data_path 'figure_attribution_Ts.jpg'])
 
 
-%% 
+%% Ts attribution for all regions
 Fontsize_value = 14;
 Fontname_value = 'Arial';
 n_row = 1;
@@ -413,6 +417,7 @@ set(gca,'YLim',[y_down y_up]);
 set(gca, 'YTick',y_down:2:y_up);
 set(gca, 'YTickLabel', {'-2','0','2','4','6'});
 
+% plot legend
 plot(5,(y_up-y_down)*(9.2-0.6*(region_index-2))/10+y_down,'s','MarkerEdgeColor','none','MarkerFaceColor',color(region_index,:),'MarkerSize',14)
 text(5.15,(y_up-y_down)*(9.2-0.6*(region_index-2))/10+y_down,region_names{region_index},'fontname',Fontname_value,'Fontsize', Fontsize_value-1,'Color',color(region_index,:))
 
@@ -424,7 +429,7 @@ ylabel('\Delta Ts (^oC)', 'fontname',Fontname_value,'Fontsize',Fontsize_value);
 set(gca, 'fontname',Fontname_value,'Fontsize',Fontsize_value)
 print('-djpeg', '-r600', [data_path 'figure_attribution_Ts.jpg'])
 
-%%
+%% The relationship between Ts and precipitation
 Fontsize_value = 14;
 Fontname_value = 'Arial';
 LineWidth_value = 1.5;

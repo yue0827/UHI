@@ -49,7 +49,7 @@ df_2_dra_prime_TRM_sel = 1./ra_sel;
 dT2_dswd_TRM_ref = dTs_dswd_TRM_ref.*f_2_TRM_ref;
 dT2_drld_TRM_ref = dTs_drld_TRM_ref.*f_2_TRM_ref;
 % dT2_dTa_TRM_ref  = dTs_dTa_TRM_ref.*f_2_TRM_ref;
-dT2_dTa_TRM_ref  = dTs_dTa_TRM_ref.*f_2_TRM_ref-ra_prime_ref/ra_ref+1; %edited on 4/3/2020
+dT2_dTa_TRM_ref  = dTs_dTa_TRM_ref.*f_2_TRM_ref-ra_prime_ref./ra_ref+1; %edited on 4/3/2020
 dT2_dqa_TRM_ref  = dTs_dqa_TRM_ref.*f_2_TRM_ref;
 dT2_dalpha_TRM_ref = dTs_dalpha_TRM_ref.*f_2_TRM_ref;
 dT2_demis_TRM_ref  = dTs_demis_TRM_ref.*f_2_TRM_ref;
@@ -57,14 +57,14 @@ dT2_dra_TRM_ref    = dTs_dra_TRM_ref.*f_2_TRM_ref + df_2_dra_TRM_ref.*(Ts_ref - 
 dT2_drs_TRM_ref    = dTs_drs_TRM_ref.*f_2_TRM_ref;
 dT2_dGrnd_TRM_ref  = dTs_dGrnd_TRM_ref.*f_2_TRM_ref;
 % dT2_dra_prime_TRM_ref  = df_2_dra_prime_TRM_ref;
-dT2_dra_prime_TRM_ref  = (Ts_ref-Ta_ref)/ra_ref; %edited on 4/3/2020
+dT2_dra_prime_TRM_ref  = (Ts_ref-Ta_ref)./ra_ref; %edited on 4/3/2020
 
 %%
 
 dT2_dswd_TRM_sel = dTs_dswd_TRM_sel.*f_2_TRM_sel;
 dT2_drld_TRM_sel = dTs_drld_TRM_sel.*f_2_TRM_sel;
 % dT2_dTa_TRM_sel  = dTs_dTa_TRM_sel.*f_2_TRM_sel;
-dT2_dTa_TRM_sel  = dTs_dTa_TRM_sel.*f_2_TRM_sel-ra_prime_sel/ra_sel+1; %edited on 4/3/2020
+dT2_dTa_TRM_sel  = dTs_dTa_TRM_sel.*f_2_TRM_sel-ra_prime_sel./ra_sel+1; %edited on 4/3/2020
 dT2_dqa_TRM_sel  = dTs_dqa_TRM_sel.*f_2_TRM_sel;
 dT2_dalpha_TRM_sel = dTs_dalpha_TRM_sel.*f_2_TRM_sel;
 dT2_demis_TRM_sel  = dTs_demis_TRM_sel.*f_2_TRM_sel;
@@ -72,5 +72,5 @@ dT2_dra_TRM_sel    = dTs_dra_TRM_sel.*f_2_TRM_sel + df_2_dra_TRM_sel.*(Ts_sel - 
 dT2_drs_TRM_sel    = dTs_drs_TRM_sel.*f_2_TRM_sel;
 dT2_dGrnd_TRM_sel  = dTs_dGrnd_TRM_sel.*f_2_TRM_sel;
 % dT2_dra_prime_TRM_sel  = df_2_dra_prime_TRM_sel;
-dT2_dra_prime_TRM_sel  = (Ts_sel-Ta_sel)/ra_sel; %edited on 4/3/2020
+dT2_dra_prime_TRM_sel  = (Ts_sel-Ta_sel)./ra_sel; %edited on 4/3/2020
 

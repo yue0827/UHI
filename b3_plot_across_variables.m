@@ -121,9 +121,12 @@ average_period_value = 2; % need modify
             
             for i =1: yr_Num
                 
-                mask_season(:,:,(i-1)*12+1:(i-1)*12+1) = 1;                
-                mask_season(:,:,(i-1)*12+11:(i-1)*12+12) = 1;
-    
+%                 mask_season(:,:,(i-1)*12+1:(i-1)*12+1) = 1;                
+%                 mask_season(:,:,(i-1)*12+11:(i-1)*12+12) = 1;
+                %%% Editted on 6/2/20
+                  mask_season(:,:,(i-1)*12+1:(i-1)*12+2) = 1;                
+                  mask_season(:,:,(i-1)*12+12:(i-1)*12+12) = 1;
+     
             end            
 
         otherwise 
@@ -198,7 +201,7 @@ lon_index{EU_index} = find (lon >lon_left_EC & lon<lon_right_EC);
 variable_all = {'Diff_Ts_all','Ts_sum_TRM_all','Ts_term_alpha_TRM_all','Ts_term_ra_TRM_all','Ts_term_rs_TRM_all','Ts_term_Grnd_TRM_all'};
 var_Num = length(variable_all);
 
-
+% calculate spatial average and variability
 for iexperiment = 1:experiment_Num
 
 for region_index = 1:region_Num
@@ -223,7 +226,7 @@ end
 
 end
 
-%%
+%% plot spatial average and variability for each attribution term
 FontSize_value = 14;
 Fontname_value = 'Arial';
 n_row = 3;
