@@ -28,7 +28,7 @@ for iland_type = 1:land_type_Num
         land_type = land_type_all{iland_type};
         variable = variable_all{ivar};
         
-        load([data_path variable '_' land_type '_month_daytime'])
+        load([data_path variable '_' land_type '_month_clear_nighttime'])
 
        
     end
@@ -44,7 +44,7 @@ var_Num = length(variable_all);
    
         variable = variable_all{ivar};
         
-        load([data_path variable '_month_daytime'])
+        load([data_path variable '_month_clear_nighttime'])
 
        
     end
@@ -60,28 +60,28 @@ sb = 5.6704*10^(-8); % stephan-boltzman constant (W/(m^2 K^4))
 lv = 2.5008e6;       % latent heat of vaporization (J/kg)
 
 % change their names to be the ones I like 
-Psurf_ref = ps_month_daytime;
-Psurf_sel = ps_month_daytime;
-swd_ref   = swdn_month_daytime;
-swd_sel   = swdn_month_daytime;
-lwd_ref   = lwdn_month_daytime;
-lwd_sel   = lwdn_month_daytime;
-Ta_ref    = t_bot_month_daytime;
-Ta_sel    = t_bot_month_daytime;
-qa_ref    = q_bot_month_daytime;
-qa_sel    = q_bot_month_daytime;
-alpha_ref = 1 - eval(strcat('fsw_',land_type_all{2},'_month_daytime'))./swdn_month_daytime;
-alpha_sel = 1 - eval(strcat('fsw_',land_type_all{1},'_month_daytime'))./swdn_month_daytime;
+Psurf_ref = ps_month_clear_nighttime;
+Psurf_sel = ps_month_clear_nighttime;
+swd_ref   = swdn_month_clear_nighttime;
+swd_sel   = swdn_month_clear_nighttime;
+lwd_ref   = lwdn_month_clear_nighttime;
+lwd_sel   = lwdn_month_clear_nighttime;
+Ta_ref    = t_bot_month_clear_nighttime;
+Ta_sel    = t_bot_month_clear_nighttime;
+qa_ref    = q_bot_month_clear_nighttime;
+qa_sel    = q_bot_month_clear_nighttime;
+alpha_ref = 1 - eval(strcat('fsw_',land_type_all{2},'_month_clear_nighttime'))./swdn_month_clear_nighttime;
+alpha_sel = 1 - eval(strcat('fsw_',land_type_all{1},'_month_clear_nighttime'))./swdn_month_clear_nighttime;
 emis_ref  = 1;
 emis_sel  = 1;
-Qh_ref    = eval(strcat('sens_',land_type_all{2},'_month_daytime'));
-Qh_sel    = eval(strcat('sens_',land_type_all{1},'_month_daytime'));
-Qle_ref   = lv*eval(strcat('evap_',land_type_all{2},'_month_daytime'));
-Qle_sel   = lv*eval(strcat('evap_',land_type_all{1},'_month_daytime'));
-Ts_ref    = eval(strcat('Tca_',land_type_all{2},'_month_daytime')); % canopy-air temperature
-Ts_sel    = eval(strcat('Tca_',land_type_all{1},'_month_daytime')); % canopy-air temperature
-T2_ref    = eval(strcat('t_ref_',land_type_all{2},'_month_daytime')); % 2m temperature
-T2_sel    = eval(strcat('t_ref_',land_type_all{1},'_month_daytime')); % 2m temperature
+Qh_ref    = eval(strcat('sens_',land_type_all{2},'_month_clear_nighttime'));
+Qh_sel    = eval(strcat('sens_',land_type_all{1},'_month_clear_nighttime'));
+Qle_ref   = lv*eval(strcat('evap_',land_type_all{2},'_month_clear_nighttime'));
+Qle_sel   = lv*eval(strcat('evap_',land_type_all{1},'_month_clear_nighttime'));
+Ts_ref    = eval(strcat('Tca_',land_type_all{2},'_month_clear_nighttime')); % canopy-air temperature
+Ts_sel    = eval(strcat('Tca_',land_type_all{1},'_month_clear_nighttime')); % canopy-air temperature
+T2_ref    = eval(strcat('t_ref_',land_type_all{2},'_month_clear_nighttime')); % 2m temperature
+T2_sel    = eval(strcat('t_ref_',land_type_all{1},'_month_clear_nighttime')); % 2m temperature
 
 % optimization inputs
 limit = 10;
@@ -111,7 +111,7 @@ use_previously_optimized_m = 0;
 
 
 %%        
-save ([data_path 'all_T2_',land_type_all{2},'_',land_type_all{1},'_daytime.mat'], 'Diff_T2','mask', ...
+save ([data_path 'all_T2_',land_type_all{2},'_',land_type_all{1},'_clear_nighttime.mat'], 'Diff_T2','mask', ...
           'Rn_str_ref',  'Grnd_ref', 'ro_ref', 'ra_ref', 'rs_ref', 'f_TRM_ref', ...
           'Rn_str_sel',  'Grnd_sel', 'ro_sel', 'ra_sel', 'rs_sel', 'f_TRM_sel', ...  
           'ra_prime_ref','f_2_TRM_ref',...

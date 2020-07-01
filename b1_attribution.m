@@ -1,3 +1,4 @@
+% lines with * means need editted while change input
 clear all
 close all
 clc
@@ -28,7 +29,7 @@ for iland_type = 1:land_type_Num
         land_type = land_type_all{iland_type};
         variable = variable_all{ivar};
         
-        load([data_path variable '_' land_type '_month_daytime'])
+        load([data_path variable '_' land_type '_month_clear_daytime']) % *
 
        
     end
@@ -44,7 +45,7 @@ var_Num = length(variable_all);
    
         variable = variable_all{ivar};
         
-        load([data_path variable '_month_daytime'])
+        load([data_path variable '_month_clear_daytime']) % *
 
        
     end
@@ -60,26 +61,26 @@ sb = 5.6704*10^(-8); % stephan-boltzman constant (W/(m^2 K^4))
 lv = 2.5008e6;       % latent heat of vaporization (J/kg)
 
 % change their names to be the ones I like 
-Psurf_ref = ps_month_daytime;
-Psurf_sel = ps_month_daytime;
-swd_ref   = swdn_month_daytime;
-swd_sel   = swdn_month_daytime;
-lwd_ref   = lwdn_month_daytime;
-lwd_sel   = lwdn_month_daytime;
-Ta_ref    = t_bot_month_daytime;
-Ta_sel    = t_bot_month_daytime;
-qa_ref    = q_bot_month_daytime;
-qa_sel    = q_bot_month_daytime;
-alpha_ref = 1 - eval(strcat('fsw_',land_type_all{2},'_month_daytime'))./swdn_month_daytime;
-alpha_sel = 1 - eval(strcat('fsw_',land_type_all{1},'_month_daytime'))./swdn_month_daytime;
+Psurf_ref = ps_month_clear_daytime; % *
+Psurf_sel = ps_month_clear_daytime; % *
+swd_ref   = swdn_month_clear_daytime; % *
+swd_sel   = swdn_month_clear_daytime; % *
+lwd_ref   = lwdn_month_clear_daytime; % *
+lwd_sel   = lwdn_month_clear_daytime; % *
+Ta_ref    = t_bot_month_clear_daytime; % *
+Ta_sel    = t_bot_month_clear_daytime; % *
+qa_ref    = q_bot_month_clear_daytime; % *
+qa_sel    = q_bot_month_clear_daytime; % *
+alpha_ref = 1 - eval(strcat('fsw_',land_type_all{2},'_month_clear_daytime'))./swdn_month_clear_daytime; % *
+alpha_sel = 1 - eval(strcat('fsw_',land_type_all{1},'_month_clear_daytime'))./swdn_month_clear_daytime; % *
 emis_ref  = 1;
 emis_sel  = 1;
-Qh_ref    = eval(strcat('sens_',land_type_all{2},'_month_daytime'));
-Qh_sel    = eval(strcat('sens_',land_type_all{1},'_month_daytime'));
-Qle_ref   = lv*eval(strcat('evap_',land_type_all{2},'_month_daytime'));
-Qle_sel   = lv*eval(strcat('evap_',land_type_all{1},'_month_daytime'));
-Ts_ref    = eval(strcat('Tca_',land_type_all{2},'_month_daytime')); % canopy-air temperature
-Ts_sel    = eval(strcat('Tca_',land_type_all{1},'_month_daytime')); % canopy-air temperature
+Qh_ref    = eval(strcat('sens_',land_type_all{2},'_month_clear_daytime')); % *
+Qh_sel    = eval(strcat('sens_',land_type_all{1},'_month_clear_daytime')); % *
+Qle_ref   = lv*eval(strcat('evap_',land_type_all{2},'_month_clear_daytime')); % *
+Qle_sel   = lv*eval(strcat('evap_',land_type_all{1},'_month_clear_daytime')); % *
+Ts_ref    = eval(strcat('Tca_',land_type_all{2},'_month_clear_daytime')); % canopy-air temperature % *
+Ts_sel    = eval(strcat('Tca_',land_type_all{1},'_month_clear_daytime')); % canopy-air temperature % *
 
 
 % optimization inputs
@@ -99,9 +100,12 @@ use_previously_optimized_m = 0;
               Psurf_sel,swd_sel,lwd_sel,Ta_sel,qa_sel,alpha_sel,emis_sel,Qh_sel,Qle_sel,Ts_sel);
 
 %% 
-save ([data_path 'all_Ts_',land_type_all{2},'_',land_type_all{1},'_daytime.mat'], 'Diff_Ts','mask', ...
+% * editted on 6/25
+save ([data_path 'all_Ts_',land_type_all{2},'_',land_type_all{1},'_clear_daytime.mat'], 'Diff_Ts','mask', ...
           'Rn_str_ref',  'Grnd_ref', 'ro_ref', 'ra_ref', 'rs_ref', 'f_TRM_ref', ...
-          'Rn_str_sel',  'Grnd_sel', 'ro_sel', 'ra_sel', 'rs_sel', 'f_TRM_sel', ...  
+          'alpha_ref' , 'Qh_ref','Qle_ref',...
+          'Rn_str_sel',  'Grnd_sel', 'ro_sel', 'ra_sel', 'rs_sel', 'f_TRM_sel', ... 
+          'alpha_sel' , 'Qh_sel','Qle_sel',...
           'dTs_dswd_TRM_ref', 'dTs_drld_TRM_ref', 'dTs_dTa_TRM_ref', 'dTs_dqa_TRM_ref', 'dTs_dalpha_TRM_ref', 'dTs_demis_TRM_ref', 'dTs_dra_TRM_ref', 'dTs_drs_TRM_ref', 'dTs_dGrnd_TRM_ref', ...
           'dTs_dswd_TRM_sel', 'dTs_drld_TRM_sel', 'dTs_dTa_TRM_sel', 'dTs_dqa_TRM_sel', 'dTs_dalpha_TRM_sel', 'dTs_demis_TRM_sel', 'dTs_dra_TRM_sel', 'dTs_drs_TRM_sel', 'dTs_dGrnd_TRM_sel', ...          
           'dTs_dswd_TRM', 'dTs_drld_TRM', 'dTs_dTa_TRM', 'dTs_dqa_TRM', 'dTs_dalpha_TRM', 'dTs_demis_TRM', 'dTs_dra_TRM', 'dTs_drs_TRM', 'dTs_dGrnd_TRM', ...

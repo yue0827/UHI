@@ -1,4 +1,6 @@
-% This is the Two-Resistance Mechanism attribution method for Qs
+% This is the Two-Resistance Mechanism attribution method for Qs 
+% editted on 4/26/20 to add attribution to swd rld Ta qa emis
+
 
 function [Diff_Ts,...
           Rn_str_ref, Grnd_ref,ro_ref,ra_ref,rs_ref,f_TRM_ref,...
