@@ -34,12 +34,9 @@ for iexperiment = 1:experiment_Num
         Diff_Ts_all{iexperiment}=Diff_Ts;
         Ts_sum_TRM_all{iexperiment}=Ts_sum_TRM;
         Ts_term_alpha_TRM_all{iexperiment}=Ts_term_alpha_TRM;
-<<<<<<< HEAD
         Ts_term_ra_sum_TRM_all{iexperiment}=Ts_term_ra_TRM;
         Ts_term_ra_TRM_all{iexperiment}=Ts_term_ra_TRM; % added on July 16
-=======
         Ts_term_ra_TRM_all{iexperiment}=Ts_term_ra_TRM;
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
         Ts_term_rs_TRM_all{iexperiment}=Ts_term_rs_TRM;
         Ts_term_Grnd_TRM_all{iexperiment}=Ts_term_Grnd_TRM;
         
@@ -54,13 +51,10 @@ for iexperiment = 1:experiment_Num
         Diff_Ts_all{iexperiment}=Diff_T2;
         Ts_sum_TRM_all{iexperiment}=T2_sum_TRM;
         Ts_term_alpha_TRM_all{iexperiment}=T2_term_alpha_TRM;
-<<<<<<< HEAD
         Ts_term_ra_sum_TRM_all{iexperiment}=T2_term_ra_TRM+T2_term_ra_prime_TRM;
         Ts_term_ra_TRM_all{iexperiment}=T2_term_ra_TRM; % added on July 16
         Ts_term_ra_prime_TRM_all{iexperiment}=T2_term_ra_prime_TRM; % added on July 16
-=======
         Ts_term_ra_TRM_all{iexperiment}=T2_term_ra_TRM+T2_term_ra_prime_TRM;
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
         Ts_term_rs_TRM_all{iexperiment}=T2_term_rs_TRM;
         Ts_term_Grnd_TRM_all{iexperiment}=T2_term_Grnd_TRM;
     end
@@ -73,12 +67,9 @@ for iexperiment = 1:experiment_Num
         Diff_Ts_all{iexperiment}=Diff_WGT;
         Ts_sum_TRM_all{iexperiment}=WGT_sum_TRM;
         Ts_term_alpha_TRM_all{iexperiment}=WGT_term_alpha_TRM;
-<<<<<<< HEAD
         Ts_term_ra_sum_TRM_all{iexperiment}=WGT_term_ra_TRM;
         Ts_term_ra_TRM_all{iexperiment}=WGT_term_ra_TRM; % added on July 16
-=======
         Ts_term_ra_TRM_all{iexperiment}=WGT_term_ra_TRM;
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
         Ts_term_rs_TRM_all{iexperiment}=WGT_term_rs_TRM;
         Ts_term_Grnd_TRM_all{iexperiment}=WGT_term_Grnd_TRM;
     end
@@ -91,13 +82,10 @@ for iexperiment = 1:experiment_Num
         Diff_Ts_all{iexperiment}=Diff_WGT;
         Ts_sum_TRM_all{iexperiment}=WGT_sum_TRM;
         Ts_term_alpha_TRM_all{iexperiment}=WGT_term_alpha_TRM;
-<<<<<<< HEAD
         Ts_term_ra_sum_TRM_all{iexperiment}=WGT_term_ra_TRM + WGT_term_ra_prime_TRM;
         Ts_term_ra_TRM_all{iexperiment}=WGT_term_ra_TRM; % added on July 16
         Ts_term_ra_prime_TRM_all{iexperiment}=WGT_term_ra_prime_TRM; % added on July 16
-=======
         Ts_term_ra_TRM_all{iexperiment}=WGT_term_ra_TRM;
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
         Ts_term_rs_TRM_all{iexperiment}=WGT_term_rs_TRM;
         Ts_term_Grnd_TRM_all{iexperiment}=WGT_term_Grnd_TRM;
         
@@ -110,13 +98,10 @@ end
 
 
 data_path ='./';
-<<<<<<< HEAD
 save('attribution_clear_daytime_all.mat','Diff_Ts_all','Ts_sum_TRM_all',...
      'Ts_term_alpha_TRM_all','Ts_term_ra_sum_TRM_all','Ts_term_ra_TRM_all','Ts_term_ra_prime_TRM_all','Ts_term_rs_TRM_all',...
      'Ts_term_Grnd_TRM_all');
-=======
 
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
 %% create mask_urban
 [nrow, ncol , N] = size(Diff_Ts); % N is number of months in the whole time series
 
@@ -127,11 +112,8 @@ mask_urban = repmat(mask_urban_temp, 1, 1, N);
 %% create mask_season
 
 %average_period_value = 1 (annual), 2(summer), 3(winter)
-<<<<<<< HEAD
 average_period_value = 2; % need modify
-=======
 average_period_value = 3; % need modify
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
 
 
 mask_season = nan(nrow, ncol , N);
@@ -165,11 +147,8 @@ switch average_period_value
         
     otherwise
         
-<<<<<<< HEAD
         disp(' ')
-=======
         disp('average_period_value needs to be 1 or 2 or 3')
->>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
         
 end
 
