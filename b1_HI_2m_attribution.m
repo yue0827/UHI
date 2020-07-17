@@ -28,7 +28,11 @@ for iland_type = 1:land_type_Num
         land_type = land_type_all{iland_type};
         variable = variable_all{ivar};
         
+<<<<<<< HEAD
+        load([data_path variable '_' land_type '_month_clear_daytime'])
+=======
         load([data_path variable '_' land_type '_month_clear_nighttime'])
+>>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
 
        
     end
@@ -44,7 +48,11 @@ var_Num = length(variable_all);
    
         variable = variable_all{ivar};
         
+<<<<<<< HEAD
+        load([data_path variable '_month_clear_daytime'])
+=======
         load([data_path variable '_month_clear_nighttime'])
+>>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
 
        
     end
@@ -59,6 +67,34 @@ sb = 5.6704*10^(-8); % stephan-boltzman constant (W/(m^2 K^4))
 lv = 2.5008e6;       % latent heat of vaporization (J/kg)
 
 % change their names  
+<<<<<<< HEAD
+Psurf_ref = ps_month_clear_daytime;
+Psurf_sel = ps_month_clear_daytime;
+swd_ref   = swdn_month_clear_daytime;
+swd_sel   = swdn_month_clear_daytime;
+lwd_ref   = lwdn_month_clear_daytime;
+lwd_sel   = lwdn_month_clear_daytime;
+Ta_ref    = t_bot_month_clear_daytime;
+Ta_sel    = t_bot_month_clear_daytime;
+qa_ref    = q_bot_month_clear_daytime;
+qa_sel    = q_bot_month_clear_daytime;
+alpha_ref = 1 - eval(strcat('fsw_',land_type_all{2},'_month_clear_daytime'))./swdn_month_clear_daytime;
+alpha_sel = 1 - eval(strcat('fsw_',land_type_all{1},'_month_clear_daytime'))./swdn_month_clear_daytime;
+emis_ref  = 1;
+emis_sel  = 1;
+Qh_ref    = eval(strcat('sens_',land_type_all{2},'_month_clear_daytime'));
+Qh_sel    = eval(strcat('sens_',land_type_all{1},'_month_clear_daytime'));
+Qle_ref   = lv*eval(strcat('evap_',land_type_all{2},'_month_clear_daytime'));
+Qle_sel   = lv*eval(strcat('evap_',land_type_all{1},'_month_clear_daytime'));
+Ts_ref    = eval(strcat('Tca_',land_type_all{2},'_month_clear_daytime')); % canopy-air temperature
+Ts_sel    = eval(strcat('Tca_',land_type_all{1},'_month_clear_daytime')); % canopy-air temperature
+qs_ref    = eval(strcat('qca_',land_type_all{2},'_month_clear_daytime')); % canopy-air humidity
+qs_sel    = eval(strcat('qca_',land_type_all{1},'_month_clear_daytime')); % canopy-air humidity
+T2_ref    = eval(strcat('t_ref_',land_type_all{2},'_month_clear_daytime')); % 2m temperature
+T2_sel    = eval(strcat('t_ref_',land_type_all{1},'_month_clear_daytime')); % 2m temperature
+q2_ref    = eval(strcat('q_ref_',land_type_all{2},'_month_clear_daytime')); % 2m humidity
+q2_sel    = eval(strcat('q_ref_',land_type_all{1},'_month_clear_daytime')); % 2m humidity
+=======
 Psurf_ref = ps_month_clear_nighttime;
 Psurf_sel = ps_month_clear_nighttime;
 swd_ref   = swdn_month_clear_nighttime;
@@ -85,6 +121,7 @@ T2_ref    = eval(strcat('t_ref_',land_type_all{2},'_month_clear_nighttime')); % 
 T2_sel    = eval(strcat('t_ref_',land_type_all{1},'_month_clear_nighttime')); % 2m temperature
 q2_ref    = eval(strcat('q_ref_',land_type_all{2},'_month_clear_nighttime')); % 2m humidity
 q2_sel    = eval(strcat('q_ref_',land_type_all{1},'_month_clear_nighttime')); % 2m humidity
+>>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
 
 % optimization inputs
 limit = 10;
@@ -122,7 +159,11 @@ use_previously_optimized_m = 0;
               Psurf_ref,swd_ref,lwd_ref,Ta_ref,qa_ref,alpha_ref,emis_ref,Qh_ref,Qle_ref,Ts_ref,T2_ref,q2_ref,...  % inputs over the reference patch
               Psurf_sel,swd_sel,lwd_sel,Ta_sel,qa_sel,alpha_sel,emis_sel,Qh_sel,Qle_sel,Ts_sel,T2_sel,q2_sel);     % inputs over the perturbed patch
 
+<<<<<<< HEAD
+save ([data_path 'all_T2_',land_type_all{2},'_',land_type_all{1},'_clear_daytime_test.mat'], 'Diff_T2','mask', ...
+=======
 save ([data_path 'all_T2_',land_type_all{2},'_',land_type_all{1},'_clear_nighttime_test.mat'], 'Diff_T2','mask', ...
+>>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
           'Rn_str_ref',  'Grnd_ref', 'ro_ref', 'ra_ref', 'rs_ref', 'f_TRM_ref', ...
           'Rn_str_sel',  'Grnd_sel', 'ro_sel', 'ra_sel', 'rs_sel', 'f_TRM_sel', ...  
           'ra_prime_ref','f_2_TRM_ref',...
@@ -133,14 +174,22 @@ save ([data_path 'all_T2_',land_type_all{2},'_',land_type_all{1},'_clear_nightti
           'T2_term_swd_TRM', 'T2_term_rld_TRM', 'T2_term_Ta_TRM', 'T2_term_qa_TRM', 'T2_term_alpha_TRM', 'T2_term_emis_TRM', 'T2_term_ra_TRM','T2_term_rs_TRM', 'T2_term_Grnd_TRM','T2_term_ra_prime_TRM',...
           'T2_sum_TRM')
       
+<<<<<<< HEAD
+save ([data_path 'all_q2_',land_type_all{2},'_',land_type_all{1},'_clear_daytime.mat'], 'Diff_q2','mask',...
+=======
 save ([data_path 'all_q2_',land_type_all{2},'_',land_type_all{1},'_clear_nighttime.mat'], 'Diff_q2','mask',...
+>>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
           'dq2_dswd_TRM_ref', 'dq2_drld_TRM_ref', 'dq2_dTa_TRM_ref', 'dq2_dqa_TRM_ref', 'dq2_dalpha_TRM_ref', 'dq2_demis_TRM_ref', 'dq2_dra_TRM_ref', 'dq2_drs_TRM_ref', 'dq2_dGrnd_TRM_ref', 'dq2_dra_prime_TRM_ref',...
           'dq2_dswd_TRM_sel', 'dq2_drld_TRM_sel', 'dq2_dTa_TRM_sel', 'dq2_dqa_TRM_sel', 'dq2_dalpha_TRM_sel', 'dq2_demis_TRM_sel', 'dq2_dra_TRM_sel', 'dq2_drs_TRM_sel', 'dq2_dGrnd_TRM_sel', 'dq2_dra_prime_TRM_sel',...     
           'dq2_dswd_TRM', 'dq2_drld_TRM', 'dq2_dTa_TRM', 'dq2_dqa_TRM', 'dq2_dalpha_TRM', 'dq2_demis_TRM', 'dq2_dra_TRM', 'dq2_drs_TRM', 'dq2_dGrnd_TRM', 'dq2_dra_prime_TRM',...
           'q2_term_swd_TRM', 'q2_term_rld_TRM', 'q2_term_Ta_TRM', 'q2_term_qa_TRM', 'q2_term_alpha_TRM', 'q2_term_emis_TRM', 'q2_term_ra_TRM','q2_term_rs_TRM', 'q2_term_Grnd_TRM','q2_term_ra_prime_TRM',...
           'q2_sum_TRM')
       
+<<<<<<< HEAD
+save ([data_path 'all_WGT_2m_',land_type_all{2},'_',land_type_all{1},'_clear_daytime.mat'],'Diff_WGT','mask',...
+=======
 save ([data_path 'all_WGT_2m_',land_type_all{2},'_',land_type_all{1},'_clear_nighttime.mat'],'Diff_WGT','mask',...
+>>>>>>> ed519db2acc67c9637bf4516b5b26556d9979a0b
           'dWGT_dswd_TRM_ref', 'dWGT_drld_TRM_ref', 'dWGT_dTa_TRM_ref', 'dWGT_dqa_TRM_ref', 'dWGT_dalpha_TRM_ref', 'dWGT_demis_TRM_ref', 'dWGT_dra_TRM_ref', 'dWGT_drs_TRM_ref', 'dWGT_dGrnd_TRM_ref', 'dWGT_dra_prime_TRM_ref',...
           'dWGT_dswd_TRM_sel', 'dWGT_drld_TRM_sel', 'dWGT_dTa_TRM_sel', 'dWGT_dqa_TRM_sel', 'dWGT_dalpha_TRM_sel', 'dWGT_demis_TRM_sel', 'dWGT_dra_TRM_sel', 'dWGT_drs_TRM_sel', 'dWGT_dGrnd_TRM_sel', 'dWGT_dra_prime_TRM_sel',...     
           'dWGT_dswd_TRM', 'dWGT_drld_TRM', 'dWGT_dTa_TRM', 'dWGT_dqa_TRM', 'dWGT_dalpha_TRM', 'dWGT_demis_TRM', 'dWGT_dra_TRM', 'dWGT_drs_TRM', 'dWGT_dGrnd_TRM', 'dWGT_dra_prime_TRM',...
