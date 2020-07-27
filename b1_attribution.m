@@ -82,7 +82,7 @@ Qle_sel   = lv*eval(strcat('evap_',land_type_all{1},'_month_clear_daytime')); % 
 Ts_ref    = eval(strcat('Tca_',land_type_all{2},'_month_clear_daytime')); % canopy-air temperature % *
 Ts_sel    = eval(strcat('Tca_',land_type_all{1},'_month_clear_daytime')); % canopy-air temperature % *
 
-
+%%
 % optimization inputs
 limit = 10;
 do_optimize = 1;

@@ -1,10 +1,10 @@
 close all
 clear all
 clc;
-
+%%
 do_global_regional_attribution = 1;
 do_global_pattern = 1;
-figure_path = './figures/';
+figure_path = '/Users/yueqin/Documents/UHI_atrribution/UHIfigure/';
 %% load common variables
 addpath('./MatlabFunctions')
 addpath('./MatlabFunctions/TRM')
